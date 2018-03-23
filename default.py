@@ -149,6 +149,15 @@ def SHOW(url):
             for desc in matchd2:
              descr = descr + desc       
              addLink(name,link,4,descr,thumbnail)
+           if 'src="http://fs5.directupload.net/images/160512/5vfdqm8y.png" onload="imgFit' in data:
+            matchd2 = re.compile('5vfdqm8y.png".*\n.*\n.*\n.*\n.*>(.*)').findall(data)
+            for desc in matchd2:       
+             addLink(name,link,4,desc,thumbnail)
+           if 'Сюжет :' in data:
+            descr = ''       
+            matchd2 = re.compile('Сюжет :.*>(.*)').findall(data)
+            for desc in matchd2:       
+             addLink(name,link,4,desc,thumbnail)  
              br = br + 1
         if br == 0:
          xbmc.executebuiltin(('Notification(%s,%s,%s,%s)' % ('MAGNET', 'Няма магнитен линк върнете се назад', '5000', __icon__)))
